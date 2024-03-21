@@ -36,7 +36,7 @@ Example usage: `[slsc, cc, metadata, x_axis, z_axis] = beamformer_SLSC_US_linear
 
 ### DAS and SLSC B-mode image display
 
-MATLAB script [CUBDL_SLSC.m](MATLAB code/CUBDL_SLSC.m) plots the B-mode images using delay-and-sum beamformer and short-lag spatial-coherence beamformer.
+MATLAB script [CUBDL_SLSC.m](MATLAB_code/CUBDL_SLSC.m) plots the B-mode images using delay-and-sum beamformer and short-lag spatial-coherence beamformer.
 
 ### mLOC calculation
 
