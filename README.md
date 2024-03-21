@@ -24,13 +24,13 @@ Note that this data-saving script takes up lots of memory.
 
 ### IQ to RF conversion
 
-MATLAB function [iq2rf_jz.m](MATLAB code/iq2rf_jz.m) converts delayed IQ data to delayed RF data.
+MATLAB function [iq2rf_jz.m](MATLAB_code/iq2rf_jz.m) converts delayed IQ data to delayed RF data.
 
 Example usage: `rf = iq2rf_jz(I, Q, f0, fs, 1, 1, centerAngle_flag)`
 
 ### Spatial coherence and SLSC beamformer
 
-MATLAB function [beamformer_SLSC_PW_US_linear.m](MATLAB code/beamformer_SLSC_PW_US_linear.m) computes the coherence coefficient matrix and the SLSC image matrix using plane wave data.
+MATLAB function [beamformer_SLSC_PW_US_linear.m](MATLAB_code/beamformer_SLSC_PW_US_linear.m) computes the coherence coefficient matrix and the SLSC image matrix using plane wave data.
 
 Example usage: `[slsc, cc, metadata, x_axis, z_axis] = beamformer_SLSC_US_linear(delay_data, metadata)`
 
@@ -40,7 +40,7 @@ MATLAB script [CUBDL_SLSC.m](MATLAB_code/CUBDL_SLSC.m) plots the B-mode images u
 
 ### mLOC calculation
 
-MATLAB script [mLOC.m](MATLAB code/mLOC.m) calculates the lag one coherence, selects a region of interest surrounding a target, and finds the maximum spatial coherence.
+MATLAB script [mLOC.m](MATLAB_code/mLOC.m) calculates the lag one coherence, selects a region of interest surrounding a target, and finds the maximum spatial coherence.
 
 This script also computes 6 image quality metrics, including lateral FWHM, axial FWHM, contrast, CNR, SNR, and gCNR.
 
