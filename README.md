@@ -17,7 +17,9 @@ If you use this code, please cite the following three references:
 ### Data loading and saving
 
 Python script test_submissions_saveIQ.py loads and saves delayed IQ data of shape `[nsamples, nelements, nplanewaves]`.
+
 Make sure you also have the following Python scripts: das_torch_saveIQ.py and save_IQdata.py.
+
 Note that this data-saving script takes up lots of memory.
 
 ### IQ to RF conversion
