@@ -36,7 +36,7 @@ MATLAB script CUBDL_SLSC.m plots the B-mode images using delay-and-sum beamforme
 
 ### mLOC calculation
 
-MATLAB script xxx calculates the lag one coherence, selects a region of interest surrounding a target, and finds the maximum spatial coherence.
+MATLAB script mLOC.m calculates the lag one coherence, selects a region of interest surrounding a target, and finds the maximum spatial coherence.
 
 This script also computes 6 image quality metrics, including lateral FWHM, axial FWHM, contrast, CNR, SNR, and gCNR.
 
