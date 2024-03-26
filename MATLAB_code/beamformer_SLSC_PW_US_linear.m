@@ -72,6 +72,7 @@ for pw = 1:metadata.Sys.N_pw
     for M=1:maxM
         slsc_temp(:,:,M) = squeeze(sum(cc_temp(:,1:M,:),2))/M;
     end
+    slsc_temp(slsc_temp<0) = 0; % set negative SLSC image pixels to zero (Nair AA: Robust Short-Lag Spatial Coherence Imaging)
     slsc = slsc + slsc_temp;
 end
 
