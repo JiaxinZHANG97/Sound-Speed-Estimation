@@ -81,6 +81,8 @@ def measure_lesion_soundspeed(idx):
         ctr_b_new = (np.asarray(ctr_b) * c_ratio).tolist()
         xlims_new = (np.asarray(xlims) * c_ratio).tolist()
         zlims_new = (np.asarray(zlims) * c_ratio).tolist()
+        roi_size_halfX_new = roi_size_halfX * c_ratio
+        roi_size_halfZ_new = roi_size_halfZ * c_ratio
         grid = make_pixel_grid(xlims_new, zlims_new, dx, dz)
         fnum = 1
 
