@@ -4,7 +4,7 @@
 
 This repository is for applying the mLOC metric [1] to the CUBDL data [2,3]. mLOC calculates the maximum lag one coherence within a region of interest surrounding a target. This metric was originally designed for sound speed estimation and flexible array shape estimation in photoacoustic imaging.
 
-This repository uses Python and MATLAB programming languages. CUBDL data are loaded following the same project structure as [CUBDL GitLab](https://gitlab.com/dongwoon.hyun/cubdl/-/tree/master) and are saved as delayed IQ data. IQ data are converted into RF data, which are then used for spatial coherence calculation and mLOC calculation.
+This repository uses Python and MATLAB programming languages. CUBDL data are loaded following the same project structure as [CUBDL GitLab](https://gitlab.com/dongwoon.hyun/cubdl/-/tree/master) and are saved as delayed or non-delayed IQ data. IQ data are converted into RF data, which are then used for spatial coherence calculation, mLOC calculation, and max or min SLSC calculation.
 
 If you use this code, please cite the following three references:
  
