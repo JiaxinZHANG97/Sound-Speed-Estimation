@@ -16,11 +16,19 @@ If you use this code, please cite the following three references:
 
 ### Data loading and saving
 
+#### Save delayed data
+
 Python script [test_submissions_saveIQ.py](submissions/test_submissions_saveIQ.py) loads and saves delayed IQ data of shape `[nsamples, nelements, nplanewaves]`.
 
 Make sure you also have the following Python scripts: [das_torch_saveIQ.py](cubdl/das_torch_saveIQ.py) and [save_IQdata.py](scoring/save_IQdata.py).
 
 Note that this data-saving script takes up lots of memory.
+
+#### Save non-delayed data
+
+Python scripts [make_save_rois_invivo.py](scoring/make_save_rois_invivo.py) and [make_save_image_invivo.py](scoring/make_save_image_invivo.py) load and save non-delayed IQ data for the selected ROI grid or full image grid, respectively. The delay and beamforming steps are done using MATLAB scipts.
+
+Make sure you also have the following Python script: [das_torch_saveData.py](cubdl/das_torch_saveData.py).
 
 ### IQ to RF conversion
 
@@ -32,16 +40,27 @@ Example usage: `rf = iq2rf_jz(I, Q, f0, fs, 1, 1, centerAngle_flag)`
 
 MATLAB function [beamformer_SLSC_PW_US_linear.m](MATLAB_code/beamformer_SLSC_PW_US_linear.m) computes the coherence coefficient matrix and the SLSC image matrix using plane wave data.
 
-Example usage: `[slsc, cc, metadata, x_axis, z_axis] = beamformer_SLSC_US_linear(delay_data, metadata)`
+Example usage: `[slsc, cc, metadata, x_axis, z_axis] = beamformer_SLSC_US_linear(delay_data, metadata, zero_out_flag)`
+
+Set `zero_out_flag = false` when calculating the max or min SLSC within ROI (e.g., line 142 in mLOC.m). Set `zero_out_flag = true` when plotting SLSC images (e.g., line 165 in CUBDL_SLSC.m).
 
 ### DAS and SLSC B-mode image display
 
 MATLAB script [CUBDL_SLSC.m](MATLAB_code/CUBDL_SLSC.m) plots the B-mode images using delay-and-sum beamformer and short-lag spatial-coherence beamformer.
 
-### mLOC calculation
+### Maximum or minimum SLSC calculation
 
-MATLAB script [mLOC.m](MATLAB_code/mLOC.m) calculates the lag one coherence, selects a region of interest surrounding a target, and finds the maximum spatial coherence.
+MATLAB script [mLOC.m](MATLAB_code/mLOC.m) calculates the maximum and minimum cumulative spatial coherence within the ROI (which is defined in [make_save_rois_invivo.py](scoring/make_save_rois_invivo.py)) per sound speed per M.
 
-This script also computes 6 image quality metrics, including lateral FWHM, axial FWHM, contrast, CNR, SNR, and gCNR.
+### Sound speed maps and other plots
 
+MATLAB script [plot_CUBDL_SLSC.m](MATLAB_code/plot_CUBDL_SLSC.m) creates sound speed maps. It plots cumulative spatial coherence (i.e., SLSC) per sound speed per M and looks for the most frequent (i.e., mode) sound speed within M ranging 0-30% of the receiving aperture.
+This script also plots speckle brightness, axial FWHM, lateral FWHM, contrast, CNR, and gCNR as functions of sound speed values.
 
+### Image quality metrics
+
+[measure_lesion_soundspeed.py](scoring/measure_lesion_soundspeed.py) measures contrast, CNR, and gCNR of lesion targets at different sound speeds.
+
+[measure_point_soundspeed.py](scoring/measure_point_soundspeed.py) measures lateral and axial FWHM of point targets at different sound speeds.
+
+[measure_speckle_soundspeed.py](scoring/measure_speckle_soundspeed.py) measures speckle SNR of speckle regions at different sound speeds.
