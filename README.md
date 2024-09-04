@@ -41,7 +41,7 @@ Example usage: `rf = iq2rf_jz(I, Q, f0, fs, 1, 1, centerAngle_flag)`
 
 MATLAB function [beamformer_SLSC_PW_US_linear.m](MATLAB_code/beamformer_SLSC_PW_US_linear.m) computes the coherence coefficient matrix and the SLSC image matrix using plane wave data.
 
-Example usage: `[slsc, cc, metadata, x_axis, z_axis] = beamformer_SLSC_US_linear(delay_data, metadata, zero_out_flag)`
+Example usage: `[slsc, cc, metadata, x_axis, z_axis] = beamformer_SLSC_PW_US_linear(delay_data, metadata, zero_out_flag)`
 
 Set `zero_out_flag = false` when calculating the max or min SLSC within ROI (e.g., line 142 in mLOC.m). Set `zero_out_flag = true` when plotting SLSC images (e.g., line 165 in CUBDL_SLSC.m).
 
