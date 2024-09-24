@@ -153,6 +153,26 @@ def rois_invivo(idx, outdir=os.path.join("scoring", "rois", "invivo")):
         # roi = 2
         # xlims = [-2.4e-3, 1.6e-3]
         # zlims = [13.5e-3, 16.5e-3]
+    elif idx == 7:
+        data_source, acq = "INS", 14
+        P, _, _ = load_data(data_source, acq)
+        image_type = "phantom"
+        # # roi 1 (point target)
+        roi = 1
+        xlims = [7.1e-3, 10.7e-3]
+        zlims = [33.3e-3, 35.3e-3]
+        # # roi 2 (vessel)
+        # roi = 2
+        # xlims = [-6.5e-3, -3.5e-3]
+        # zlims = [23e-3, 26e-3]
+    elif idx == 8:
+        data_source, acq = "INS", 12
+        P, _, _ = load_data(data_source, acq)
+        image_type = "phantom"
+        # # roi 1 (point target)
+        roi = 1
+        xlims = [10.5e-3, 14.8e-3]
+        zlims = [30.2e-3, 32.3e-3]
     else:
         raise NotImplementedError
 
