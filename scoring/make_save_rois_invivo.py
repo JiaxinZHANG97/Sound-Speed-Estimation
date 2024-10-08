@@ -121,7 +121,7 @@ def rois_invivo(idx, outdir=os.path.join("scoring", "rois", "invivo")):
         zlims = [39.5e-3, 46.5e-3]
 
     elif idx == 4:
-        data_source, acq = "JHU", 27
+        data_source, acq = "JHU", 27 # patient breast mass
         P, _, _ = load_data(data_source, acq)
         image_type = "invivo"
         # # roi 1
