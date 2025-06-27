@@ -2,16 +2,18 @@
 
 ## Description
 
-This repository is for applying the mLOC metric [1] to the CUBDL data [2,3]. mLOC calculates the maximum lag one coherence within a region of interest surrounding a target. This metric was originally designed for sound speed estimation and flexible array shape estimation in photoacoustic imaging.
+This repository is for coherence-based sound speed estimation [1] in plane wave ultrasound using CUBDL data [2,3]. This method estimates sound speeds by maximizing the maximum short-lag spatial coherence (SLSC) or minimizing the histogram-filtered mean SLSC values within selected ROIs for coherent or incoherent targets, respectively.
 
 This repository uses Python and MATLAB programming languages. CUBDL data are loaded following the same project structure as [CUBDL GitLab](https://gitlab.com/dongwoon.hyun/cubdl/-/tree/master) and are saved as delayed or non-delayed IQ data. IQ data are converted into RF data, which are then used for spatial coherence calculation, mLOC calculation, and max or min SLSC calculation.
 
+P.S.: This method originated from mLOC (maximum lag one coherence) metric [4], which calculates the maximum lag one coherence within a region of interest surrounding a target. This metric was originally designed for sound speed estimation and flexible array shape estimation in photoacoustic imaging.
+
 If you use this code, please cite the following references:
 
-1. Jiaxin Zhang, Yunlong Zhu, and Muyinatu A. Lediju Bell "Coherence-Based Optimization Using Cumulative Spatial Lags to Estimate Sound Speed in Plane Wave Images of Coherent and Incoherent Targets", IUS 2024 (Accepted. Will be available soon)
-2. Jiaxin Zhang, Kai Ding, and Muyinatu A. Lediju Bell "Flexible array curvature and sound speed estimations with a maximum spatial lag-one coherence metric", Proc. SPIE 12842, Photons Plus Ultrasound: Imaging and Sensing 2024, 128421D (12 March 2024); https://doi.org/10.1117/12.3005709
-3. D. Hyun, A. Wiacek, S. Goudarzi, S. Rothlübbers, A. Asif, K. Eickel, Y. C. Eldar, J. Huang, M. Mischi, H. Rivaz, D. Sinden, R.J.G. van Sloun, H. Strohm, M. A. L. Bell, Deep Learning for Ultrasound Image Formation: CUBDL Evaluation Framework & Open Datasets, IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control [[pdf]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9475029)
-4. Muyinatu A. Lediju Bell, Jiaqi Huang, Alycen Wiacek, Ping Gong, Shigao Chen, Alessandro Ramalli, Piero Tortoli, Ben Luijten, Massimo Mischi, Ole Marius Hoel Rindal, Vincent Perrot, Hervé Liebgott, Xi Zhang, Jianwen Luo, Eniola Oluyemi, Emily Ambinder, “Challenge on Ultrasound Beamforming with Deep Learning (CUBDL) Datasets”, IEEE DataPort, 2019 [Online]. Available: http://dx.doi.org/10.21227/f0hn-8f92
+1. Jiaxin Zhang, Yunlong Zhu, and Muyinatu A. Lediju Bell "Coherence-Based Optimization Using Cumulative Spatial Lags to Estimate Sound Speed in Plane Wave Images of Coherent and Incoherent Targets", IUS 2024 [[paper]](https://ieeexplore.ieee.org/abstract/document/10793792)
+2. D. Hyun, A. Wiacek, S. Goudarzi, S. Rothlübbers, A. Asif, K. Eickel, Y. C. Eldar, J. Huang, M. Mischi, H. Rivaz, D. Sinden, R.J.G. van Sloun, H. Strohm, M. A. L. Bell, Deep Learning for Ultrasound Image Formation: CUBDL Evaluation Framework & Open Datasets, IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control [[pdf]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9475029)
+3. Muyinatu A. Lediju Bell, Jiaqi Huang, Alycen Wiacek, Ping Gong, Shigao Chen, Alessandro Ramalli, Piero Tortoli, Ben Luijten, Massimo Mischi, Ole Marius Hoel Rindal, Vincent Perrot, Hervé Liebgott, Xi Zhang, Jianwen Luo, Eniola Oluyemi, Emily Ambinder, “Challenge on Ultrasound Beamforming with Deep Learning (CUBDL) Datasets”, IEEE DataPort, 2019 [Online]. Available: http://dx.doi.org/10.21227/f0hn-8f92
+4. Jiaxin Zhang, Kai Ding, and Muyinatu A. Lediju Bell "Flexible array curvature and sound speed estimations with a maximum spatial lag-one coherence metric", Proc. SPIE 12842, Photons Plus Ultrasound: Imaging and Sensing 2024, 128421D (12 March 2024); https://doi.org/10.1117/12.3005709
 
 ## Notes
 
@@ -53,7 +55,7 @@ MATLAB script [CUBDL_SLSC.m](MATLAB_code/CUBDL_SLSC.m) plots the B-mode images u
 
 MATLAB script [mLOC.m](MATLAB_code/mLOC.m) calculates the maximum and minimum cumulative spatial coherence within the ROI (which is defined in [make_save_rois_invivo.py](scoring/make_save_rois_invivo.py)) per sound speed per M.
 
-### Sound speed maps and other plots
+### Coherence maps and other plots
 
 MATLAB script [plot_CUBDL_SLSC.m](MATLAB_code/plot_CUBDL_SLSC.m) creates sound speed maps. It plots cumulative spatial coherence (i.e., SLSC) per sound speed per M and looks for the most frequent (i.e., mode) sound speed within M ranging 0-30% of the receiving aperture.
 This script also plots speckle brightness, axial FWHM, lateral FWHM, contrast, CNR, and gCNR as functions of sound speed values.
