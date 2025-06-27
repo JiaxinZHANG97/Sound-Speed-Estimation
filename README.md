@@ -19,19 +19,22 @@ If you use this code, please cite the following references:
 
 ### Data loading and saving
 
-#### Save delayed data
+- Save non-delayed data (suggested)
 
-Python script [test_submissions_saveIQ.py](submissions/test_submissions_saveIQ.py) loads and saves delayed IQ data of shape `[nsamples, nelements, nplanewaves]`.
+  Python scripts [make_save_rois_invivo.py](scoring/make_save_rois_invivo.py) and [make_save_image_invivo.py](scoring/make_save_image_invivo.py) load and save non-delayed IQ data for the selected ROI grid or full image grid, respectively. The delay and beamforming steps are done using MATLAB scipts.
+  - [make_save_rois_invivo.py](scoring/make_save_rois_invivo.py) asks for keyboard input:
 
-Make sure you also have the following Python scripts: [das_torch_saveIQ.py](cubdl/das_torch_saveIQ.py) and [save_IQdata.py](scoring/save_IQdata.py).
+    Typing in `test` plots a DAS image; typing in `save` saves the non-delayed IQ data.
+  
+  Make sure you also have the following Python script: [das_torch_saveData.py](cubdl/das_torch_saveData.py).
 
-Note that this data-saving script takes up lots of memory.
+- Save delayed data (optional)
 
-#### Save non-delayed data
-
-Python scripts [make_save_rois_invivo.py](scoring/make_save_rois_invivo.py) and [make_save_image_invivo.py](scoring/make_save_image_invivo.py) load and save non-delayed IQ data for the selected ROI grid or full image grid, respectively. The delay and beamforming steps are done using MATLAB scipts.
-
-Make sure you also have the following Python script: [das_torch_saveData.py](cubdl/das_torch_saveData.py).
+  Python script [test_submissions_saveIQ.py](submissions/test_submissions_saveIQ.py) loads and saves delayed IQ data of shape `[nsamples, nelements, nplanewaves]`.
+  
+  Make sure you also have the following Python scripts: [das_torch_saveIQ.py](cubdl/das_torch_saveIQ.py) and [save_IQdata.py](scoring/save_IQdata.py).
+  
+  Note that this data-saving script takes up lots of memory.
 
 ### IQ to RF conversion
 
@@ -51,19 +54,24 @@ Set `zero_out_flag = false` when calculating the max or min SLSC within ROI (e.g
 
 MATLAB script [CUBDL_SLSC.m](MATLAB_code/CUBDL_SLSC.m) plots the B-mode images using delay-and-sum beamformer and short-lag spatial-coherence beamformer.
 
-### Maximum or minimum SLSC calculation
+### Maximum, minimum, mean, or histogram-filtered SLSC calculation
 
-MATLAB script [mLOC.m](MATLAB_code/mLOC.m) calculates the maximum and minimum cumulative spatial coherence within the ROI (which is defined in [make_save_rois_invivo.py](scoring/make_save_rois_invivo.py)) per sound speed per M.
+MATLAB script [mLOC.m](MATLAB_code/mLOC.m) calculates the maximum, minimum, mean, or histogram-filtered SLSC values within the ROI (which is defined in [make_save_rois_invivo.py](scoring/make_save_rois_invivo.py)) per sound speed per M.
 
 ### Coherence maps and other plots
 
-MATLAB script [plot_CUBDL_SLSC.m](MATLAB_code/plot_CUBDL_SLSC.m) creates sound speed maps. It plots cumulative spatial coherence (i.e., SLSC) per sound speed per M and looks for the most frequent (i.e., mode) sound speed within M ranging 0-30% of the receiving aperture.
+MATLAB script [plot_CUBDL_SLSC.m](MATLAB_code/plot_CUBDL_SLSC.m) creates coherence maps. It plots SLSC values per sound speed per M and looks for the most frequent (i.e., mode) sound speed within M ranging 0-30% of the transmit aperture.
 This script also plots speckle brightness, axial FWHM, lateral FWHM, contrast, CNR, and gCNR as functions of sound speed values.
 
 ### Image quality metrics
 
 [measure_lesion_soundspeed.py](scoring/measure_lesion_soundspeed.py) measures contrast, CNR, and gCNR of lesion targets at different sound speeds.
 
+[measure_lesion_soundspeed_multiROI.py](scoring/measure_lesion_soundspeed_multiROI.py) measures contrast with one target ROI and multiple background ROIs of lesions at different sound speeds.
+
 [measure_point_soundspeed.py](scoring/measure_point_soundspeed.py) measures lateral and axial FWHM of point targets at different sound speeds.
 
 [measure_speckle_soundspeed.py](scoring/measure_speckle_soundspeed.py) measures speckle SNR of speckle regions at different sound speeds.
+
+### ROI selection
+[drawROI.m](MATLAB_code/drawROI.m) allows you to draw an ROI and prints out the ROI location. It also creates multiple (`roi_num`) equal background ROIs with the sum of their areas equals the single target ROI. 
